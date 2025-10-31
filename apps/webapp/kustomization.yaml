@@ -6,8 +6,9 @@ resources:
   - service.yaml
   - configmap.yaml
 
-commonLabels:
-  app: webapp
-  version: v1.0.0
+labels:
+  - pairs:
+      app: webapp
+      version: v1.0.0
 
 namespace: default
