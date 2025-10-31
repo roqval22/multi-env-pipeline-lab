@@ -15,8 +15,8 @@ resources:
 
 configMapGenerator:
   - name: webapp-config
-  - behavior: merge
-  - literals:
+    behavior: replace
+    literals:
     - ENVIRONMENT=staging
     - VERSION=1.0.0-rc
     - LOG_LEVEL=info
@@ -24,8 +24,8 @@ configMapGenerator:
 
 replicas:
   - name: webapp
-  - count: 2
+    count: 2
 
 images:
   - name: nginxdemos/hello
-  - newTag: latest
+    newTag: latest
