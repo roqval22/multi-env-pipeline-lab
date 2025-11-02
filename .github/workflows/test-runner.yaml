@@ -1,5 +1,7 @@
 name: Test Self-Hosted Runner
- 
+
+#force refresh
+
 on:
   workflow_dispatch:
  
