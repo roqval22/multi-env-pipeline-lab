@@ -2,6 +2,22 @@
 # =====================================================
 # 🚀 Script de arranque DevOps local
 # Levanta Minikube, ArgoCD y Dashboard de Kubernetes
+# ----------------------------------------------------------
+# Descripción:
+#   - Inicia Minikube y verifica el clúster Kubernetes.
+#   - Despliega (si es necesario) ArgoCD en su namespace.
+#   - Realiza port-forward y login automático al CLI de ArgoCD.
+#   - Abre el dashboard de Kubernetes en el navegador.
+#
+# Uso:
+#   bash start-devops-env.sh
+#
+# Requisitos:
+#   - Docker instalado y en ejecución
+#   - Minikube y kubectl configurados
+#   - argocd CLI instalado
+#
+# Autor: Roqval22
 # =====================================================
 
 set -e  # Detener ejecución ante cualquier error
@@ -50,7 +66,8 @@ kubectl get pods -n $ARGOCD_NAMESPACE
 
 # --- 6️⃣ Exponer ArgoCD (port-forward) ---
 echo "🌐 Iniciando port-forward en https://localhost:$ARGOCD_PORT ..."
-kubectl port-forward svc/argocd-server -n $ARGOCD_NAMESPACE $ARGOCD_PORT:443 > /dev/null 2>&1 &
+# Abre una nueva terminal que mantiene vivo el port-forward
+start "" bash -c "kubectl port-forward svc/argocd-server -n $ARGOCD_NAMESPACE $ARGOCD_PORT:443"
 ARGO_PID=$!
 sleep 5  # Esperar a que se abra el puerto
 
