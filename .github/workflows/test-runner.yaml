@@ -37,3 +37,4 @@ jobs:
       - name: Success!
         run: |
           echo "🎉 ¡El runner funciona y tiene acceso al clúster!"
+          
