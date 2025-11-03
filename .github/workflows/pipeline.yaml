@@ -22,13 +22,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Delete old deployment (if exists)
-        run: |
-          kubectl delete deployment dev-webapp -n dev --ignore-not-found
-      - name: Apply manifests
-        run: |
-          kubectl apply -k environments/dev
-
+        
       - name: Deploy to Dev
         run: |
           echo "🚀 Desplegando en el entorno dev..."
