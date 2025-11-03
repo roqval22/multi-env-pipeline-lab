@@ -63,7 +63,7 @@ jobs:
       - name: Wait for rollout
         run: |
           echo "⏳ Esperando a que termine el despliegue..."
-          kubectl rollout status deployment/staging-webapp -n staging --timeout=5m
+          kubectl rollout status deployment/staging-webapp -n staging
 
       - name: Verify staging deployment
         run: |
@@ -72,7 +72,7 @@ jobs:
           kubectl get svc -n staging
 
       - name: ✅ Staging deployment complete
-        run: echo "✅ ¡Despliegue en staging finalizado!"
+        run: echo "✅ ¡Despliegue staging finalizado!"
 
   # Job 3: Desplegar a Producción
   deploy-prod:
