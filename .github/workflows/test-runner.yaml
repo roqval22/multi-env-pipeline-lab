@@ -11,9 +11,12 @@ jobs:
     runs-on: self-hosted
     defaults:
       run:
-        shell: bash
+        shell: cmd
     steps:
-      - run: "✅ Git Bash funciona"
+      - name: Usar Git Bash
+        shell: cmd
+        run: |
+          "C:\Program Files\Git\bin\bash.exe" -c "echo 'Hello from Git Bash'"
       - name: Checkout code
         uses: actions/checkout@v4
       
