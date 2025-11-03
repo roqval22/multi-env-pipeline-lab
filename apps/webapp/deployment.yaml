@@ -1,19 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
+  name: dev-webapp
+  namespace: dev
   labels:
-    app: webapp
+    app: dev-webapp
+    environment: dev
     managed-by: github-actions
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: webapp
+      app: dev-webapp
   template:
     metadata:
       labels:
-        app: webapp
+        app: dev-webapp
+        environment: dev
     spec:
       containers:
         - name: webapp
