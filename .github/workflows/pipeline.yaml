@@ -46,7 +46,7 @@ jobs:
   deploy-staging:
     name: "🚀 Deploy a Staging"
     needs: deploy-dev
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && github.event_name == 'push'
     runs-on: self-hosted
     environment:
       name: staging
